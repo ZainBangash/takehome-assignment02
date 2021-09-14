@@ -6,7 +6,7 @@ executors:
     environment:
       IMAGE_NAME : zain/node-hello
     docker:
-      - image : s3817403/node-hello:lastest
+      - image : s3817403/takehome_assignment02
 jobs:
   build:
     executor : docker-publisher
