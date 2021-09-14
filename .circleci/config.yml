@@ -11,9 +11,7 @@ jobs:
       - run: 
           name: NPM install
           command: npm install -g install-docker-cli
-      #- run: 
-       #   name: NPM start
-        #  command: npm start
+     
       - run:
           name: Build Docker image
           command: docker build -t z/building-on-ci .
