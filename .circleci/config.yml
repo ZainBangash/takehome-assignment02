@@ -4,9 +4,9 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME : s3817403/node-hello
+      IMAGE_NAME : zain/node-hello
     docker:
-      - image : s3817403/takehome_assignment02:stretch
+      - image : s3817403/hello-node
 jobs:
   build:
     executor : docker-publisher
