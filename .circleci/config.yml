@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     environment:
-      IMAGE_NAME: z/building-on-ci
+      IMAGE_NAME: s3817403/node-hello
     docker:
       - image: s3817403/takehome-assignment02:latest
     steps:
