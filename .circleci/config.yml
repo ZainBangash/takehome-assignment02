@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     environment:
-      IMAGE_NAME: node-hello
+      IMAGE_NAME: s3817403/node-hello
     docker:
       - image: s3817403/takehome-assignment02:latest
     steps:
@@ -14,4 +14,4 @@ jobs:
      
       - run:
           name: Build Docker image
-          command: docker build -t node-hello .
+          command: docker build -t s3817403/node-hello:latest .
