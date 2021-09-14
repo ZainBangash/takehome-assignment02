@@ -15,5 +15,5 @@ jobs:
           name: audit fix
           command: npm audit fix
       - run:
-          name: Build Docker image
-          command: docker build -t s3817403/node-hello:latest .
+          name: compose
+          command: docker-compose build
