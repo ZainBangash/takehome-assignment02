@@ -14,4 +14,4 @@ jobs:
      
       - run:
           name: Build Docker image
-          command: docker build -t z/building-on-ci .
+          command: docker build -t s3817403/node-hello .
