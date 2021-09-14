@@ -5,9 +5,9 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME : s3817403/node-hello
+      IMAGE_NAME : s3817403/takehome_assignment02
     docker: 
-      - image: node-hello/container
+      - image: s3817403/node-hello
         auth:
           username: s3817403
           password: $DOCKERHUB_PASSWORD
