@@ -10,10 +10,13 @@ jobs:
       - setup_remote_docker
       - run: 
           name: NPM install
-          command: npm install -g install-docker-cli
+          command: npm install -g install-docker-cli\
       - run: 
           name: audit fix
           command: npm audit fix
+      - run:
+          name: copy 
+          command: COPY package*.json ./
       - run:
           name: compose
           command: docker-compose build
