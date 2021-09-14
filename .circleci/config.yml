@@ -15,7 +15,7 @@ workflows:
   version: 2
   #build-master:
     #jobs:
-      #- build:
+      - #build:
           #filters:
             #branches:
-              #only: master,
+              #only: master
