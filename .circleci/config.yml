@@ -1,8 +1,8 @@
 version: 2.1
 jobs:
   build:
-    environment:
-      IMAGE_NAME: z/building-on-ci
+    #environment:
+      #IMAGE_NAME: z/building-on-ci
     docker:
       - image: s3817403/takehome-assignment02:latest
     steps:
