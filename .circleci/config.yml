@@ -22,10 +22,29 @@ jobs:
       - run:
           name: build
           command: docker build -t $IMAGE_NAME .
+      - run: 
+          name: build compose
+          command: docker-compose build
+      - run:
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+
   publish-latest:
     executor: docker-publisher
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+      - run:
+          name: Login
+          command: docker login --username s3817403 --password Kohatkpkbangash4
       - run:
           name: Push image to docker hub
           command: docker push $IMAGE_NAME:latest
@@ -36,10 +55,11 @@ workflows:
       - build:
           filters:
             branches:
-              only: workflow
+              only: master
       - publish-latest:
           requires:
             - build
           filters:
             branches:
-              only: workflow
+              only: master
+         
