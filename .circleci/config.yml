@@ -1,12 +1,15 @@
 version: 2.1
 services:
     - docker
-jobs:
-  build:
+executors:
+  docker-publisher:
     environment:
       IMAGE_NAME: s3817403/node-hello
     docker:
       - image: circleci/node:16
+jobs:
+  build:
+    executor: docker-publisher 
     steps:
       - checkout
       - setup_remote_docker
@@ -20,14 +23,23 @@ jobs:
           name: build
           command: docker build -t $IMAGE_NAME .
   publish-latest:
-    environment:
-      IMAGE_NAME: node-hello
-    docker:
-      - image: circleci/node:16
+    executor: docker-publisher
     steps:
       - setup_remote_docker
       - run:
-          name: Publish Docker Image to Docker Hub
-          command: |
-            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker push $IMAGE_NAME:latest
+          name: Push image to docker hub
+          command: docker push $IMAGE_NAME:latest
+workflows:
+  version: 2
+  build-master:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: workflow
+      - publish-latest:
+          requires:
+            - build
+          filters:
+            branches:
+              only: workflow
