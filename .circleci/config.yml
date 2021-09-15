@@ -3,7 +3,6 @@ services:
     - docker
 jobs:
   build:
-    working_directory: -/node-hello
     environment:
       IMAGE_NAME: s3817403/node-hello
     docker:
