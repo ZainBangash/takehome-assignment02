@@ -17,8 +17,5 @@ jobs:
           name: audit fix
           command: npm audit fix
       - run:
-          name: copy 
-          command: COPY package*.json ./
-      - run:
           name: build
           command: docker build -t $IMAGE_NAME .
